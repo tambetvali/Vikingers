@@ -65,7 +65,7 @@ So the imaginary Viking empire must be the free world not to be taken yet - it's
 
 <br>
 
-![VikingFreeEmpire](Data/AfricanFantasyMap/Data/AfricanFantasyMap/VikingFreeEmpire.png)
+![VikingFreeEmpire](Data/AfricanFantasyMap/VikingFreeEmpire.png)
 
 <br>
 
