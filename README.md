@@ -2,6 +2,10 @@
 
 **Warnin': this repo is not historically authentic, but rather a mix of ideas, mythos, and Viking's own fantasy.**
 
+Here is the original Vikipedia open source map, below replace by my fantasy map around the same topics:
+
+> ![Viking Expansion](Data/References/Viking_Expansion-transparent.png)
+
 ## ᚼ
 
 Heil to the Tourist maps to fantasy.
@@ -126,6 +130,10 @@ In Old Norse and the Scandinavian sagas, Saaremaa was known as Eysýsla (or Ösy
 - **Elder Futhark**	*ᛖᛃᛋᚢᛋᛚᚨ (Eysusla)*	***ᚠᛖᛚᛋᛚᚨᚾᛏ (Felsland)***
 
 ## Vikingen Imperium ᛟ ᚢᛁᚴᛁᚾᚴᛁᚾ ᛁᛘᛒᛁᚱᛁᚢᛘ
+
+This is Shamanistic presentation of Viking World Map: not all, but here the nearby Shamanists are all present with their tiipiis and tents:
+
+![Shamanist Viking Map](Data/ShamanismWorldMap/VikingShamanismWorldMap.png)
 
 This blends into two modes:
 
