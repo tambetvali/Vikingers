@@ -1,0 +1,1 @@
+Here, AI turns Viking Expansion map, open source map from Vikipedia - you can check the licence and probably you have to mention it -, into topological map with distorted sizes and classic imaginary style, not discrete-coordinate modern sea traveller's map.
