@@ -140,6 +140,19 @@ In Old Norse and the Scandinavian sagas, Saaremaa was known as Eysýsla (or Ösy
 
 > In Saare Language ("Language of the Island"), "Saare", "of Island", translates to "of Saaremaa". This can be used legally in Estonian, generally understood as dialect-based form.
 
+
+#### Saaremaa
+
+Saarema Viking Fantasy map - Oeselian Viking: 
+
+Oeselian Sea Routes to Viking Shamanism:
+
+![OeselianVikinMap](/Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinMap.png)
+
+Oeselian Viking close zoom in:
+
+![OeselianVikinClose](/Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinClose.png)
+
 #### Saaremaa & Vilsandi Linguistic Map
 
 **Language**	*Saaremaa (The Island District)*	***Vilsandi (The Rock Land)***
@@ -200,18 +213,6 @@ London Viking Fantasy Map:
 > - ***Vikengers*** *with a deliberate E-shift*	A modified Viking identity that can carry additional meanings in your constructed language
 >
 > **My suggestion**: Keep *Vikengers* if you want the name to suggest more than warriors—people who carry a shared cultural spirit, perhaps including explorers, musicians, shamans, traders, and spiritual warriors.
-
-###### Saaremaa
-
-Saarema Viking Fantasy map - Oeselian Viking: 
-
-Oeselian Sea Routes to Viking Shamanism:
-
-![OeselianVikinMap](/Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinMap.png)
-
-Oeselian Viking close zoom in:
-
-![OeselianVikinClose](/Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinClose.png)
 
 ## ABSTRACT: THE DUAL HORIZON
 This article introduces the paradigm of **Organic Civilization**—a framework where human maturity is measured by ancestral alignment, environmental observation, and sovereignty of the spirit rather than material infrastructure or centralized bureaucracy. 
