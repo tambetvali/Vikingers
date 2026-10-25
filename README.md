@@ -166,6 +166,41 @@ This blends into two modes:
 
 # THE ORGANIC COMPASS: RECONCILING THE SHAMANIC EMPIRE AND HISTORICAL PARADIGMS
 
+##### Maps by AI
+
+###### Greater Africa: the Central Viking Empire
+
+Originally, all Viking Empire was located within Africa, in the Viking Soul:
+
+![GreaterAfrica](Data/NorthernFantasyMap/GreaterAfrica.png)
+
+This is what "ancient" could mean: Vikings, as other nations, can track their history back because the blood never began, but inside the human history each human can go to beginning. In beginning Viking Empire liveth in this Great African Ecosystem.
+
+###### Stockholm: the Viking Capital
+
+You can find historic capital from north of North, at top of Sweden; but for Saaremaa people this was the trading and sea center and closest to your everyday Viking capital where to trade over sea, as you can see from it's positioning:
+
+Enlargened fantasy map of Stockholm itself:
+
+![Stockholm](https://github.com/tambetvali/Vikingers/blob/main/Data/NorthernFantasyMap/Stockholm.png)
+
+###### Englanders: the Inlander Vikengers
+
+London Viking Fantasy Map:
+
+![London](https://github.com/tambetvali/Vikingers/blob/main/Data/NorthernFantasyMap/London.png)
+
+"Vikenger": ChatGPT on my Viking-inspired talk:
+> I think Vikengers is an interesting name for your Viking-inspired language, especially if the E is an intentional way to shift the tone or aspect of the original word.
+>
+> **Form**	Possible impression
+> - **Viking**	Historical, familiar, forceful, maritime warrior
+> - **Vikenger**	More like a member of a people, order, or tradition
+> - **Vikengers**	A collective identity, a civilization, or a community
+> - ***Vikengers*** *with a deliberate E-shift*	A modified Viking identity that can carry additional meanings in your constructed language
+>
+> **My suggestion**: Keep *Vikengers* if you want the name to suggest more than warriors—people who carry a shared cultural spirit, perhaps including explorers, musicians, shamans, traders, and spiritual warriors.
+
 ## ABSTRACT: THE DUAL HORIZON
 This article introduces the paradigm of **Organic Civilization**—a framework where human maturity is measured by ancestral alignment, environmental observation, and sovereignty of the spirit rather than material infrastructure or centralized bureaucracy. 
 
