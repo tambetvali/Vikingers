@@ -1,6 +1,6 @@
 # Vikingers
 
-**Warnin': this repo is not hi
+**Warnin': this repo is not historically authentic, but rather a mix of ideas, mythos, and Viking's own fantasy.
 
 ## ᚼ
 
