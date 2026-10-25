@@ -50,6 +50,25 @@ I don't see this so literally; but we can seek how the Viking Soul spread and it
 
 > Yggdrasil is the Viking inspiration with strong roots and reaching branches, such that the Valkyrie's hunger would be met with goodwill.
 
+This map, therefore, is not inspired by the history, but by what she told me:
+> Did the civilized Vikings come to a stage, visiting them, impressing some with the new qualities they did not yet have; yet at the sunlight of their Empires?
+
+Then the story looks like this - fractal map, repeating the world races like original african tribes and families with their family signs and symbols; the motif is rather poetic than literal, because I could not position them myself as it's rather a metaphysical fractal idea than literal reality:
+
+<br>
+
+![InternationalShamanismMap](Data/AfricanFantasyMap/InternationalShamanismMap.png)
+
+<br>
+
+So the imaginary Viking empire must be the free world not to be taken yet - it's all, a Spiritual Warrior Shamanist; or they got real trouble:
+
+<br>
+
+![VikingFreeEmpire](Data/AfricanFantasyMap/Data/AfricanFantasyMap/VikingFreeEmpire.png)
+
+<br>
+
 ##### ᚠᚢᚱᚾ ᛅᚱᚠᚢᚱ ᛒᚢᚱᚾ
 
 **(Forn arfr borinn)**
