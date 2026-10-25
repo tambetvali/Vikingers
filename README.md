@@ -201,6 +201,18 @@ London Viking Fantasy Map:
 >
 > **My suggestion**: Keep *Vikengers* if you want the name to suggest more than warriors—people who carry a shared cultural spirit, perhaps including explorers, musicians, shamans, traders, and spiritual warriors.
 
+###### Saaremaa
+
+Saarema Viking Fantasy map - Oeselian Viking: 
+
+Oeselian Sea Routes to Viking Shamanism:
+
+![OeselianVikinMap](/Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinMap.png)
+
+Oeselian Viking close zoom in:
+
+![OeselianVikinClose](/Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinClose.png)
+
 ## ABSTRACT: THE DUAL HORIZON
 This article introduces the paradigm of **Organic Civilization**—a framework where human maturity is measured by ancestral alignment, environmental observation, and sovereignty of the spirit rather than material infrastructure or centralized bureaucracy. 
 
