@@ -6,6 +6,34 @@ Here is the original Vikipedia open source map, below replace by my fantasy map 
 
 > ![Viking Expansion](Data/References/Viking_Expansion-transparent.png)
 
+## ᚨ
+
+<br>
+
+![PIEAndVikingLatino](Data/LanguageTree/PIEAndVikingLatino.png)
+
+<br>
+
+ᛘᛅᛚ - MÁL — speech / language
+
+ᛏᚢᚾᚴᛅ - TUNGA — tongue
+
+✧ ᚨ ✧: PIE - PROTO-INDO-EUROPEAN (PIE)
+- ᛗ: LATIN BRANCH: PIE →
+  - Proto-Italic → Latin
+  - →Spanish · →Portuguese · →French · →Italian · →Romanian
+  - lingua = tongue, language
+- ᛗ: NORSE BRANCH: PIE →
+  - Proto-Germanic → Proto-Norse → Old Norse
+  - →Icelandic · →Norwegian · →Danish · →Swedish · →Faroese
+  - tunga = tongue
+
+<br>
+
+![PIEToVikingLatino](Data/LanguageTree/PIEToVikingLatino.png)
+
+<br>
+
 ## ᚼ
 
 Heil to the Tourist maps to fantasy.
