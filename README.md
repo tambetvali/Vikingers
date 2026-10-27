@@ -1,3 +1,8 @@
+Alternative views for this Gallery:
+- [Neocities home page of me, this Gallery](https://spireason.neocities.org/Vikingers/)
+- [Webpage 1 of this Gallery](https://oeselian-viking-sagas.lovable.app/)
+- \<coming soon\>
+
 # Vikingers
 
 **Warnin': this repo is not historically authentic, but rather a mix of ideas, mythos, and Viking's own fantasy.**
