@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101b25">
+<title>Vikingers — Maps, Languages & Legends</title>
+<meta name="description" content="Explore the Vikingers world: Nordic voyages, Oeselian history, language families, shamanic traditions and Viking-inspired fantasy.">
+<style>
+:root {
+  --night: #101b25;
+  --night2: #182a36;
+  --panel: #203441;
+  --gold: #d8b779;
+  --gold-light: #f0dcb0;
+  --paper: #f3ead7;
+  --muted: #b8c4c6;
+  --line: #425663;
+  --green: #8eb69b;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--paper);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.65;
+}
+a { color: var(--gold-light); }
+a:hover { color: white; }
+button, input, select { font: inherit; }
+button, .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  padding: .65rem .95rem;
+  color: var(--paper);
+  background: #263b48;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  cursor: pointer;
+  text-decoration: none;
+}
+button:hover, .button:hover {
+  background: #354d5b;
+  border-color: var(--gold);
+}
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.wrap { width: min(1180px, 92%); margin-inline: auto; }
+header {
+  position: relative;
+  overflow: hidden;
+  padding: 4.7rem 0 3.8rem;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 50% 0%, #39505a 0, transparent 65%),
+    linear-gradient(150deg, #162632, #101b25 70%);
+}
+header::after {
+  content: "ᛟ ᚨ ᛋ ᛏ ᚱ";
+  display: block;
+  margin-top: 1.6rem;
+  color: var(--gold);
+  font-size: 1.25rem;
+  letter-spacing: .9rem;
+  opacity: .8;
+}
+.kicker {
+  color: var(--gold);
+  font-size: .8rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+h1 {
+  margin: .4rem 0;
+  font-size: clamp(2.6rem, 8vw, 5.4rem);
+  line-height: 1.05;
+  font-weight: normal;
+  letter-spacing: .035em;
+}
+header p {
+  max-width: 690px;
+  margin: 1rem auto;
+  color: var(--muted);
+  font-size: 1.12rem;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: 1.5rem;
+}
+nav a {
+  padding: .4rem .8rem;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: .92rem;
+}
+main { padding: 2rem 0 4rem; }
+section { margin: 3rem 0; scroll-margin-top: 1rem; }
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-weight: normal;
+}
+h3 { margin: .3rem 0 .6rem; color: var(--gold-light); }
+.intro { color: var(--muted); max-width: 760px; }
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin: 1.2rem 0;
+}
+.filters button[aria-pressed="true"] {
+  color: var(--night);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.search {
+  width: min(100%, 330px);
+  padding: .7rem .8rem;
+  color: var(--paper);
+  background: var(--night2);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr));
+  gap: 1.15rem;
+}
+.card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--night2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  transition: border-color .2s, transform .2s;
+}
+.card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.preview {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background:
+    radial-gradient(ellipse at center, #304752, #15242e);
+}
+.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  color: var(--muted);
+}
+.preview .missing {
+  padding: 1.2rem;
+  color: var(--muted);
+  text-align: center;
+  font-size: .92rem;
+}
+.card-body { padding: 1rem 1rem .7rem; flex: 1; }
+.card-body p { margin: .45rem 0; color: var(--muted); font-size: .95rem; }
+.tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .7rem; }
+.tag {
+  padding: .16rem .45rem;
+  border: 1px solid #51616a;
+  border-radius: 4px;
+  color: var(--gold-light);
+  font-size: .72rem;
+  letter-spacing: .03em;
+}
+.card-actions { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0 1rem 1rem; }
+.card-actions button, .card-actions a { flex: 1; font-size: .85rem; }
+.note {
+  padding: 1.2rem 1.3rem;
+  background: #192c35;
+  border-left: 3px solid var(--gold);
+  border-radius: 0 7px 7px 0;
+}
+.note p { margin: .3rem 0; }
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 1rem;
+}
+.panel {
+  padding: 1.25rem;
+  background: var(--night2);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+.tree {
+  margin: 1rem 0;
+  padding: 1rem;
+  overflow-x: auto;
+  color: var(--paper);
+  background: #111f29;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font: .91rem/1.85 ui-monospace, SFMono-Regular, Consolas, monospace;
+  white-space: pre;
+}
+.tree .root { color: var(--gold-light); }
+.small { color: var(--muted); font-size: .87rem; }
+.toast {
+  padding: 2rem;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center, #344b51, #192b35 70%);
+  border: 1px solid #8e7952;
+  border-radius: 12px;
+}
+.toast .runes { color: var(--gold); letter-spacing: .35rem; }
+.toast blockquote {
+  max-width: 720px;
+  margin: 1rem auto;
+  font-size: clamp(1.15rem, 3vw, 1.65rem);
+  color: var(--gold-light);
+}
+footer {
+  padding: 1.7rem 0;
+  color: var(--muted);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  font-size: .87rem;
+}
+
+/* Full-screen image viewer */
+.viewer[hidden] { display: none; }
+.viewer {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: rgba(5, 10, 14, .97);
+}
+.viewer-top, .viewer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+  padding: .7rem 1rem;
+  background: #14232d;
+  border-bottom: 1px solid var(--line);
+}
+.viewer-top h2 { font-size: 1rem; }
+.viewer-bottom {
+  justify-content: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+}
+.viewer-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  background:
+    radial-gradient(ellipse at center, #182833, #080e13);
+}
+.viewer-stage.dragging { cursor: grabbing; }
+#viewerImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: none;
+  width: auto;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  transform-origin: center;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+.viewer-help { color: var(--muted); font-size: .78rem; }
+.compass {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: rgba(12, 22, 29, .85);
+  color: var(--gold-light);
+  pointer-events: none;
+}
+.compass span { font-size: 1.35rem; line-height: 1; }
+.compass small { font-size: .58rem; letter-spacing: .1em; }
+.legend {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  max-width: min(270px, 70%);
+  padding: .7rem .85rem;
+  background: rgba(12, 22, 29, .9);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font: .78rem/1.55 system-ui, sans-serif;
+}
+.legend strong { display: block; color: var(--gold-light); margin-bottom: .25rem; }
+.legend[hidden] { display: none; }
+@media (max-width: 560px) {
+  header { padding: 3rem 0 2.5rem; }
+  .section-head { align-items: stretch; }
+  .search { width: 100%; }
+  .viewer-top { justify-content: center; }
+  .viewer-top h2 { width: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="kicker">Forn arfr borinn · Ancient heritage reborn</div>
+    <h1>Vikingers</h1>
+    <p>Maps, languages, sea roads and living legends — where Oeselian history meets the wider world and Viking-inspired imagination.</p>
+    <nav aria-label="Main navigation">
+      <a href="#maps">Maps &amp; voyages</a>
+      <a href="#languages">Language &amp; runes</a>
+      <a href="#history">History &amp; myth</a>
+      <a href="#skol">The toast</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="maps">
+    <div class="section-head">
+      <div>
+        <div class="kicker">The visual archive</div>
+        <h2>Maps &amp; Voyages</h2>
+        <p class="intro">Explore the known world, imagined worlds and connections between peoples. Select a map to open the viewer.</p>
+      </div>
+      <input id="search" class="search" type="search" placeholder="Search maps, places, themes…" aria-label="Search gallery">
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter gallery">
+      <button type="button" data-filter="all" aria-pressed="true">All works</button>
+      <button type="button" data-filter="history" aria-pressed="false">History</button>
+      <button type="button" data-filter="language" aria-pressed="false">Language</button>
+      <button type="button" data-filter="myth" aria-pressed="false">Myth &amp; fantasy</button>
+      <button type="button" data-filter="world" aria-pressed="false">World maps</button>
+    </div>
+
+    <div class="gallery" id="gallery">
+
+      <!-- Paths are relative to index.html. Keep the Data folder beside this file. -->
+
+      <article class="card" data-category="history world" data-title="Viking expansion sea routes Scandinavia">
+        <button class="preview" type="button" data-open
+          data-src="Data/References/Viking_Expansion-transparent.png"
+          data-title="Viking Expansion"
+          data-legend="Historical overview|Sea routes and settlements|Routes are schematic, not navigational">
+          <img src="Data/References/Viking_Expansion-transparent.png"
+               alt="Map of Viking expansion and sea routes" loading="lazy">
+        </button>
+        <div class="card-body">
+          <h3>Viking Expansion</h3>
+          <p>Scandinavian voyages across the North Atlantic, the British Isles, the Baltic and the river routes of eastern Europe.</p>
+          <div class="tags"><span class="tag">History</span><span class="tag">Sea routes</span></div>
+        </div>
+        <div class="card-actions">
+          <button type="button" data-open data-src="Data/References/Viking_Expansion-transparent.png" data-title="Viking Expansion" data-legend="Historical overview|Sea routes and settlements|Routes are schematic, not navigational">Explore map</button>
+          <a class="button" href="Data/References/Viking_Expansion-transparent.png" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="myth world" data-title="International Shamanism Map world cultures music">
+        <button class="preview" type="button" data-open
+          data-src="Data/AfricanFantasyMap/InternationalShamanismMap.png"
+          data-title="International Shamanism Map"
+          data-legend="Cultural overview|Traditions and instruments|Illustrative connections; not a single historical map">
+          <img src="Data/AfricanFantasyMap/InternationalShamanismMap.png"
+               alt="International Shamanism Map" loading="lazy">
+        </button>
+        <div class="card-body">
+          <h3>International Shamanism Map</h3>
+          <p>A human tree of diverse traditions, instruments and cultural connections. Read it as a broad interpretive panorama, not as one unified historical tradition.</p>
+          <div class="tags"><span class="tag">World cultures</span><span class="tag">Music</span></div>
+        </div>
+        <div class="card-actions">
+          <button type="button" data-open data-src="Data/AfricanFantasyMap/InternationalShamanismMap.png" data-title="International Shamanism Map" data-legend="Cultural overview|Traditions and instruments|Illustrative connections; not a single historical map">Explore map</button>
+          <a class="button" href="Data/AfricanFantasyMap/InternationalShamanismMap.png" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="myth world" data-title="Viking Free Empire Nordic fantasy">
+        <button class="preview" type="button" data-open
+          data-src="Data/AfricanFantasyMap/VikingFreeEmpire.png"
+          data-title="Viking Free Empire"
+          data-legend="Fantasy world|Nordic maritime imagination|Not a historical political boundary map">
+          <img src="Data/AfricanFantasyMap/VikingFreeEmpire.png"
+               alt="Viking Free Empire fantasy map" loading="lazy">
+        </button>
+        <div class="card-body">
+          <h3>Viking Free Empire</h3>
+          <p>A freer, mythic maritime vision: ships, distant shores, shared stories and a Nordic identity in conversation with the world.</p>
+          <div class="tags"><span class="tag">Fantasy</span><span class="tag">Maritime</span></div>
+        </div>
+        <div class="card-actions">
+          <button type="button" data-open data-src="Data/AfricanFantasyMap/VikingFreeEmpire.png" data-title="Viking Free Empire" data-legend="Fantasy world|Nordic maritime imagination|Not a historical political boundary map">Explore map</button>
+          <a class="button" href="Data/AfricanFantasyMap/VikingFreeEmpire.png" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="history myth" data-title="Oeselian Viking map Saaremaa Vilsandi Felsland">
+        <button class="preview" type="button" data-open
+          data-src="Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinMap.png"
+          data-title="Oeselian Viking Map"
+          data-legend="Baltic Sea|Saaremaa / Oesel and neighbouring shores|Historical geography and fantasy details may be mixed">
+          <img src="Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinMap.png"
+               alt="Oeselian Viking map" loading="lazy">
+        </button>
+        <div class="card-body">
+          <h3>Oeselian Viking Map</h3>
+          <p>Saaremaa — known in Old Norse as Eysýsla — and the Baltic Sea as a starting point for exploring the wider world.</p>
+          <div class="tags"><span class="tag">Saaremaa</span><span class="tag">Baltic</span></div>
+        </div>
+        <div class="card-actions">
+          <button type="button" data-open data-src="Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinMap.png" data-title="Oeselian Viking Map" data-legend="Baltic Sea|Saaremaa / Oesel and neighbouring shores|Historical geography and fantasy details may be mixed">Explore map</button>
+          <a class="button" href="Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinMap.png" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="history myth" data-title="Oeselian close map Saaremaa">
+        <button class="preview" type="button" data-open
+          data-src="Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinClose.png"
+          data-title="Oeselian Map — Close View"
+          data-legend="Regional view|Oesel / Saaremaa|Use the map's own labels for local details">
+          <img src="Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinClose.png"
+               alt="Close view of the Oeselian map" loading="lazy">
+        </button>
+        <div class="card-body">
+          <h3>Oeselian Map — Close View</h3>
+          <p>A closer look at the island, its shores and its place in the Baltic imagination.</p>
+          <div class="tags"><span class="tag">Regional</span><span class="tag">Oesel</span></div>
+        </div>
+        <div class="card-actions">
+          <button type="button" data-open data-src="Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinClose.png" data-title="Oeselian Map — Close View" data-legend="Regional view|Oesel / Saaremaa|Use the map's own labels for local details">Explore map</button>
+          <a class="button" href="Data/NorthernFantasyMap/OeselianFantasy/OeselianVikinClose.png" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="myth world" data-title="Viking Shamanism World Map">
+        <button class="preview" type="button" data-open
+          data-src="Data/ShamanismWorldMap/VikingShamanismWorldMap.png"
+          data-title="Viking Shamanism World Map"
+          data-legend="Interpretive world map|Viking-inspired shamanism|Separate documented history from modern synthesis">
+          <img src="Data/ShamanismWorldMap/VikingShamanismWorldMap.png"
+               alt="Viking Shamanism World Map" loading="lazy">
+        </button>
+        <div class="card-body">
+          <h3>Viking Shamanism World Map</h3>
+          <p>A meeting of Nordic myth, cultural imagery and a modern interpretive framework.</p>
+          <div class="tags"><span class="tag">Myth</span><span class="tag">Interpretation</span></div>
+        </div>
+        <div class="card-actions">
+          <button type="button" data-open data-src="Data/ShamanismWorldMap/VikingShamanismWorldMap.png" data-title="Viking Shamanism World Map" data-legend="Interpretive world map|Viking-inspired shamanism|Separate documented history from modern synthesis">Explore map</button>
+          <a class="button" href="Data/ShamanismWorldMap/VikingShamanismWorldMap.png" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="history world" data-title="Greater Africa map">
+        <button class="preview" type="button" data-open
+          data-src="Data/NorthernFantasyMap/GreaterAfrica.png"
+          data-title="Greater Africa"
+          data-legend="World geography|Africa and surrounding regions|Check the original map for its scope and conventions">
+          <img src="Data/NorthernFantasyMap/GreaterAfrica.png"
+               alt="Greater Africa map" loading="lazy">
+        </button>
+        <div class="card-body">
+          <h3>Greater Africa</h3>
+          <p>A wider geographical perspective for the international routes and connections in the Vikingers collection.</p>
+          <div class="tags"><span class="tag">Geography</span><span class="tag">World</span></div>
+        </div>
+        <div class="card-actions">
+          <button type="button" data-open data-src="Data/NorthernFantasyMap/GreaterAfrica.png" data-title="Greater Africa" data-legend="World geography|Africa and surrounding regions|Check the original map for its scope and conventions">Explore map</button>
+          <a class="button" href="Data/NorthernFantasyMap/GreaterAfrica.png" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="history world" data-title="Stockholm map">
+        <button class="preview" type="button" data-open
+          data-src="Data/NorthernFantasyMap/Stockholm.png"
+          data-title="Stockholm"
+          data-legend="Place map|Stockholm and the Baltic region|Modern geography may differ from Viking-age settlement patterns">
+          <img src="Data/NorthernFantasyMap/Stockholm.png"
+               alt="Stockholm map" loading="lazy">
+        </button>
+        <div class="card-body">
+          <h3>Stockholm</h3>
+          <p>A northern point of reference in the Baltic world. Remember that the modern city developed after the Viking Age.</p>
+          <div class="tags"><span class="tag">Baltic</span><span class="tag">Scandinavia</span></div>
+        </div>
+        <div class="card-actions">
+          <button type="button" data-open data-src="Data/NorthernFantasyMap/Stockholm.png" data-title="Stockholm" data-legend="Place map|Stockholm and the Baltic region|Modern geography may differ from Viking-age settlement patterns">Explore map</button>
+          <a class="button" href="Data/NorthernFantasyMap/Stockholm.png" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="history world" data-title="London map">
+        <button class="preview" type="button" data-open
+          data-src="Data/NorthernFantasyMap/London.png"
+          data-title="London"
+          data-legend="Place map|London and the Thames|Anglo-Saxon London and later medieval London were not identical to the modern city">
+          <img src="Data/NorthernFantasyMap/London.png"
+               alt="London map" loading="lazy">
+        </button>
+        <div class="card-body">
+          <h3>London</h3>
+          <p>A western connection in the North Sea story, with a long history before, during and after the Viking Age.</p>
+          <div class="tags"><span class="tag">North Sea</span><span class="tag">History</span></div>
+        </div>
+        <div class="card-actions">
+          <button type="button" data-open data-src="Data/NorthernFantasyMap/London.png" data-title="London" data-legend="Place map|London and the Thames|Anglo-Saxon London and later medieval London were not identical to the modern city">Explore map</button>
+          <a class="button" href="Data/NorthernFantasyMap/London.png" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="language" data-title="PIE and Viking Latin language family tree">
+        <button class="preview" type="button" data-open
+          data-src="Data/LanguageTree/PIEAndVikingLatino.png"
+          data-title="PIE, Latin & Nordic Languages"
+          data-legend="Language family|Indo-European branches|PIE is reconstructed; it is not preserved in a contemporary PIE alphabet">
+          <img src="Data/LanguageTree/PIEAndVikingLatino.png"
+               alt="PIE and Viking Latin language tree" loading="lazy">
+        </button>
+        <div class="card-body">
+          <h3>PIE, Latin &amp; Nordic Languages</h3>
+          <p>A family-tree view of reconstructed Proto-Indo-European and its descendants, including Italic/Romance and Germanic/Norse.</p>
+          <div class="tags"><span class="tag">Language</span><span class="tag">Indo-European</span></div>
+        </div>
+        <div class="card-actions">
+          <button type="button" data-open data-src="Data/LanguageTree/PIEAndVikingLatino.png" data-title="PIE, Latin & Nordic Languages" data-legend="Language family|Indo-European branches|PIE is reconstructed; it is not preserved in a contemporary PIE alphabet">Explore tree</button>
+          <a class="button" href="Data/LanguageTree/PIEAndVikingLatino.png" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="language" data-title="PIE to Viking Latin language evolution">
+        <button class="preview" type="button" data-open
+          data-src="Data/LanguageTree/PIEToVikingLatino.png"
+          data-title="From PIE to Latin & Old Norse"
+          data-legend="Language history|Italic and Germanic branches|Arrows show descent, not direct mutual translation">
+          <img src="Data/LanguageTree/PIEToVikingLatino.png"
+               alt="PIE to Viking Latin language evolution" loading="lazy">
+        </button>
+        <div class="card-body">
+          <h3>From PIE to Latin &amp; Old Norse</h3>
+          <p>Follow the distinct branches: Proto-Italic to Latin and the Romance languages; Proto-Germanic to Proto-Norse and Old Norse.</p>
+          <div class="tags"><span class="tag">Language history</span><span class="tag">Evolution</span></div>
+        </div>
+        <div class="card-actions">
+          <button type="button" data-open data-src="Data/LanguageTree/PIEToVikingLatino.png" data-title="From PIE to Latin & Old Norse" data-legend="Language history|Italic and Germanic branches|Arrows show descent, not direct mutual translation">Explore tree</button>
+          <a class="button" href="Data/LanguageTree/PIEToVikingLatino.png" download>Download</a>
+        </div>
+      </article>
+
+    </div>
+    <p id="noResults" class="small" hidden>No works match this search. Try another term or category.</p>
+    <p class="small">If a card's image is missing, check that its path and capitalization match the files in your repository. The gallery deliberately preserves the paths listed in the project notes.</p>
+  </section>
+
+  <section id="languages">
+    <div class="kicker">Words carry journeys</div>
+    <h2>Language, Tongue &amp; Runes</h2>
+    <p class="intro">Languages are related by historical descent, not simply by resemblance. The tree below is a compact reference; it complements the language maps above.</p>
+
+    <div class="two-col">
+      <article class="panel">
+        <h3>ᛘᛅᛚ — MÁL</h3>
+        <p>Old Norse <em>mál</em> can mean speech, language or a matter of discussion.</p>
+        <h3>ᛏᚢᚾᚴᛅ — TUNGA</h3>
+        <p>Old Norse <em>tunga</em> means tongue and can also refer to a language.</p>
+        <p class="small">These rune spellings are stylised approximations for display, not a universal ancient spelling system. The rune row and spelling conventions changed across time and place.</p>
+      </article>
+
+      <article class="panel">
+        <h3>Two branches, one reconstructed ancestor</h3>
+        <div class="tree"><span class="root">Proto-Indo-European (PIE)</span>
+├── Proto-Italic
+│   └── Latin
+│       └── Romance languages
+│           ├── Spanish
+│           ├── Portuguese
+│           ├── French
+│           ├── Italian
+│           └── Romanian
+│
+└── Proto-Germanic
+    └── Proto-Norse
+        └── Old Norse
+            ├── Icelandic
+            ├── Norwegian
+            ├── Danish
+            ├── Swedish
+            └── Faroese</div>
+        <p class="small">This is simplified: Proto-Norse and Old Norse represent different historical stages, and the modern languages did not all descend from one identical Old Norse variety.</p>
+      </article>
+    </div>
+
+    <div class="note" style="margin-top:1rem">
+      <strong>Which runes belong to which time?</strong>
+      <p>Elder Futhark is associated with early Germanic inscriptions, broadly around the 2nd–8th centuries CE. During the Viking Age, Scandinavia predominantly used Younger Futhark. PIE itself is reconstructed by linguists: it had no attested runic or Latin alphabet of its own.</p>
+    </div>
+  </section>
+
+  <section id="history">
+    <div class="kicker">Evidence &amp; imagination</div>
+    <h2>History without losing the wonder</h2>
+    <div class="two-col" style="margin-top:1rem">
+      <article class="panel">
+        <h3>⚓ The historical sea roads</h3>
+        <p>Viking-Age Scandinavian communities connected with the British Isles, the North Atlantic, the Baltic, and river networks reaching eastern Europe and the Black Sea. The routes varied by period, purpose and political context.</p>
+        <p>Saaremaa's Salme ship burials provide important archaeological evidence of early maritime contacts across the Baltic. They do not, by themselves, establish every voyage or route depicted in a fantasy map.</p>
+      </article>
+      <article class="panel">
+        <h3>🌳 The living world tree</h3>
+        <p>Tree, ship and compass make a useful visual language for Vikingers: ancestry, movement and orientation. They can connect Nordic myth with music, stories and other cultures without implying that all traditions share one historical origin.</p>
+        <p>Fantasy maps are welcome here. Their labels should simply make clear when a border, route, empire or spiritual connection is an artistic invention rather than an established historical fact.</p>
+      </article>
+    </div>
+    <p class="small" style="margin-top:1rem">Editorial principle: distinguish attested history, scholarly reconstruction, modern interpretation and fantasy. They can coexist on one site without being presented as the same kind of evidence.</p>
+  </section>
+
+  <section id="skol">
+    <div class="toast">
+      <div class="runes">ᛟ · ᛋᚴᛅᛚ · ᛟ</div>
+      <h2>Skål, kin!</h2>
+      <p>☕ Coffee · 🚬 Cigarettes · 🥃 Rum · 🎶 Folk music · ⚓ The open sea</p>
+      <blockquote>“To Heino, to the sea roads, and to the stories that survive us. May the next voyage bring new songs, new friends and another reason to raise a cup.”</blockquote>
+      <p><strong>Skål!</strong> For the old stories and the new ones still being written.</p>
+      <p class="small">A literary nod to the family memory of <em>Silver Ükssilm, Felslandi Mereröövel</em> — and to the spirit of adventure behind it.</p>
+    </div>
+  </section>
+
+  <section id="references">
+    <h2>Further reading</h2>
+    <ul>
+      <li><a href="https://en.wikipedia.org/wiki/Viking_Age" target="_blank" rel="noopener noreferrer">Viking Age — historical overview</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Salme_ships" target="_blank" rel="noopener noreferrer">Salme ship burials — archaeological evidence</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Proto-Indo-European_language" target="_blank" rel="noopener noreferrer">Proto-Indo-European — linguistic reconstruction</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Younger_Futhark" target="_blank" rel="noopener noreferrer">Younger Futhark — Viking-Age runes</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Elder_Futhark" target="_blank" rel="noopener noreferrer">Elder Futhark — earlier runic writing</a></li>
+    </ul>
+    <p class="small">These links are starting points for verification, not citations for every individual map. The artwork may include interpretive or fictional material.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Vikingers</strong> · Forn arfr borinn</p>
+    <p>Maps for curiosity, languages for connection, stories for the voyage.</p>
+  </div>
+</footer>
+
+<!-- Accessible image viewer: zoom, pan, compass, legend and download -->
+<div class="viewer" id="viewer" role="dialog" aria-modal="true"
+     aria-label="Map viewer" hidden>
+  <div class="viewer-top">
+    <h2 id="viewerTitle">Map viewer</h2>
+    <div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center">
+      <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
+      <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+      <button type="button" id="resetView">Reset view</button>
+      <button type="button" id="toggleLegend" aria-pressed="true">Legend</button>
+      <button type="button" id="closeViewer" aria-label="Close viewer">✕ Close</button>
+    </div>
+  </div>
+  <div class="viewer-stage" id="stage">
+    <img id="viewerImage" alt="">
+    <div class="compass" aria-label="Decorative north compass">
+      <small>N</small><span>✥</span><small>S</small>
+    </div>
+    <div class="legend" id="legend">
+      <strong>Map notes</strong>
+      <div id="legendText">Use the map's labels as the primary guide.</div>
+    </div>
+  </div>
+  <div class="viewer-bottom">
+    <a class="button" id="downloadOriginal" href="#" download>Download original</a>
+    <span class="viewer-help">Scroll or use +/− to zoom · Drag to pan · Esc to close</span>
+  </div>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  // Gallery filtering and search
+  const cards = [...document.querySelectorAll(".card")];
+  const filterButtons = [...document.querySelectorAll("[data-filter]")];
+  const search = document.getElementById("search");
+  const noResults = document.getElementById("noResults");
+  let activeFilter = "all";
+
+  function updateGallery() {
+    const query = search.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const categories = (card.dataset.category || "").split(/\s+/);
+      const searchable = (
+        (card.dataset.title || "") + " " + card.innerText
+      ).toLowerCase();
+
+      const matchesFilter =
+        activeFilter === "all" || categories.includes(activeFilter);
+      const matchesSearch = !query || searchable.includes(query);
+      const visible = matchesFilter && matchesSearch;
+
+      card.hidden = !visible;
+      if (visible) visibleCount++;
+    });
+
+    noResults.hidden = visibleCount !== 0;
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      activeFilter = button.dataset.filter;
+      filterButtons.forEach(other =>
+        other.setAttribute("aria-pressed", String(other === button))
+      );
+      updateGallery();
+    });
+  });
+  search.addEventListener("input", updateGallery);
+
+  // If a referenced image doesn't exist, show a clear placeholder.
+  document.querySelectorAll(".preview img").forEach(img => {
+    img.addEventListener("error", () => {
+      const preview = img.closest(".preview");
+      if (!preview || preview.querySelector(".missing")) return;
+      img.hidden = true;
+      const message = document.createElement("span");
+      message.className = "missing";
+      message.textContent =
+        "Image not found. Check this file's relative path in the Data folder.";
+      preview.appendChild(message);
+    });
+  });
+
+  // Viewer
+  const viewer = document.getElementById("viewer");
+  const stage = document.getElementById("stage");
+  const image = document.getElementById("viewerImage");
+  const title = document.getElementById("viewerTitle");
+  const legend = document.getElementById("legend");
+  const legendText = document.getElementById("legendText");
+  const download = document.getElementById("downloadOriginal");
+
+  let scale = 1;
+  let x = 0;
+  let y = 0;
+  let imageWidth = 0;
+  let imageHeight = 0;
+  let pointerStart = null;
+  let previousFocus = null;
+
+  function draw() {
+    image.style.width = imageWidth * scale + "px";
+    image.style.height = imageHeight * scale + "px";
+    image.style.transform =
+      `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+  }
+
+  function fitImage() {
+    const stageRect = stage.getBoundingClientRect();
+    const naturalWidth = image.naturalWidth;
+    const naturalHeight = image.naturalHeight;
+    if (!naturalWidth || !naturalHeight) return;
+
+    const padding = 36;
+    const availableWidth = Math.max(100, stageRect.width - padding * 2);
+    const availableHeight = Math.max(100, stageRect.height - padding * 2);
+    const fitScale = Math.min(
+      availableWidth / naturalWidth,
+      availableHeight / naturalHeight,
+      1
+    );
+
+    imageWidth = naturalWidth;
+    imageHeight = naturalHeight;
+    scale = fitScale;
+    x = 0;
+    y = 0;
+    draw();
+  }
+
+  function setZoom(nextScale, centerX, centerY) {
+    const oldScale = scale;
+    const newScale = Math.max(.1, Math.min(8, nextScale));
+    if (newScale === oldScale) return;
+
+    if (Number.isFinite(centerX) && Number.isFinite(centerY)) {
+      const rect = stage.getBoundingClientRect();
+      const px = centerX - rect.left - rect.width / 2;
+      const py = centerY - rect.top - rect.height / 2;
+      x = px - (px - x) * (newScale / oldScale);
+      y = py - (py - y) * (newScale / oldScale);
+    }
+    scale = newScale;
+    draw();
+  }
+
+  function openViewer(button) {
+    const src = button.dataset.src;
+    if (!src) return;
+
+    previousFocus = document.activeElement;
+    title.textContent = button.dataset.title || "Map viewer";
+    image.alt = title.textContent;
+    imageWidth = 0;
+    imageHeight = 0;
+    scale = 1;
+    x = 0;
+    y = 0;
+
+    const notes = (button.dataset.legend || "").split("|");
+    legendText.replaceChildren();
+    notes.forEach(note => {
+      const line = document.createElement("div");
+      line.textContent = note;
+      legendText.appendChild(line);
+    });
+
+    legend.hidden = false;
+    document.getElementById("toggleLegend").setAttribute("aria-pressed", "true");
+    download.href = src;
+    download.setAttribute("download", src.split("/").pop() || "map");
+    viewer.hidden = false;
+    document.body.style.overflow = "hidden";
+
+    image.onload = () => fitImage();
+    image.onerror = () => {
+      imageWidth = 0;
+      imageHeight = 0;
+      image.alt = "Unable to load image: " + src;
+      title.textContent = "Image not found — check the Data path";
+    };
+    image.src = src;
+
+    document.getElementById("closeViewer").focus();
+  }
+
+  function closeViewer() {
+    viewer.hidden = true;
+    document.body.style.overflow = "";
+    pointerStart = null;
+    if (previousFocus && typeof previousFocus.focus === "function") {
+      previousFocus.focus();
+    }
+  }
+
+  document.querySelectorAll("[data-open]").forEach(button => {
+    button.addEventListener("click", () => openViewer(button));
+  });
+
+  document.getElementById("closeViewer").addEventListener("click", closeViewer);
+  document.getElementById("zoomIn").addEventListener("click", () => setZoom(scale * 1.25));
+  document.getElementById("zoomOut").addEventListener("click", () => setZoom(scale / 1.25));
+  document.getElementById("resetView").addEventListener("click", fitImage);
+
+  document.getElementById("toggleLegend").addEventListener("click", event => {
+    legend.hidden = !legend.hidden;
+    event.currentTarget.setAttribute("aria-pressed", String(!legend.hidden));
+  });
+
+  stage.addEventListener("wheel", event => {
+    if (viewer.hidden) return;
+    event.preventDefault();
+    setZoom(scale * (event.deltaY < 0 ? 1.12 : 1 / 1.12),
+      event.clientX, event.clientY);
+  }, { passive: false });
+
+  stage.addEventListener("pointerdown", event => {
+    if (viewer.hidden || event.button !== 0) return;
+    pointerStart = { id: event.pointerId, clientX: event.clientX,
+      clientY: event.clientY, x, y };
+    stage.classList.add("dragging");
+    stage.setPointerCapture(event.pointerId);
+  });
+
+  stage.addEventListener("pointermove", event => {
+    if (!pointerStart || pointerStart.id !== event.pointerId) return;
+    x = pointerStart.x + event.clientX - pointerStart.clientX;
+    y = pointerStart.y + event.clientY - pointerStart.clientY;
+    draw();
+  });
+
+  function endDrag(event) {
+    if (pointerStart && pointerStart.id === event.pointerId) {
+      pointerStart = null;
+      stage.classList.remove("dragging");
+    }
+  }
+  stage.addEventListener("pointerup", endDrag);
+  stage.addEventListener("pointercancel", endDrag);
+
+  viewer.addEventListener("click", event => {
+    if (event.target === viewer) closeViewer();
+  });
+
+  document.addEventListener("keydown", event => {
+    if (viewer.hidden) return;
+    if (event.key === "Escape") closeViewer();
+    if (event.key === "+" || event.key === "=") setZoom(scale * 1.25);
+    if (event.key === "-") setZoom(scale / 1.25);
+    if (event.key === "0") fitImage();
+  });
+
+  window.addEventListener("resize", () => {
+    if (!viewer.hidden && image.naturalWidth) fitImage();
+  });
+})();
+</script>
+</body>
+</html>
